@@ -1,0 +1,67 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        int freq[26]={0};
+        int j=0,i;
+        string s;
+        if(s1.size()>s2.size())
+        return false;
+        while(j<=s2.length()-s1.length())
+        {
+            s=s2.substr(j,s1.length());
+            i=0;
+            while(i<s.size())
+            {
+                if(count(s1.begin(),s1.end(),s[i])!=count(s.begin(),s.end(),s[i]))
+                {
+                    break;
+                }
+                i++;   
+            }
+            if(i==s.size())
+            return true;
+            j++;
+        }
+        return false;
+    }
+};
+
+
+//second approach
+
+/*
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        int freq[26]={0};
+        int j=0,i;
+        string s;
+        if(s1.size()>s2.size())
+        return false;
+        while(j<s1.length())
+        {
+            freq[s1[j]-'a']++;
+            j++;
+        }
+        j=0;
+        while(j<=s2.length()-s1.length())
+        {
+            s=s2.substr(j,s1.length());
+            i=0;
+            while(i<s.size())
+            {
+                if(freq[s[i]-'a']!=count(s.begin(),s.end(),s[i]))
+                {
+                    break;
+                }
+                i++;   
+            }
+            if(i==s.size())
+            return true;
+            j++;
+        }
+        return false;
+    }
+};
+
+*/
