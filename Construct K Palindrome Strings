@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool canConstruct(string s, int k) {
+        string str="abcdefghijklmnopqrstuvwxyz";
+        int cCount=0;
+        if(s.length()<k)
+        return false;
+        if(s.length()==k)
+        return true;
+        for(char c:str)
+        {
+            int counts=count(s.begin(),s.end(),c);
+            if(counts%2!=0)
+            cCount++;
+        }
+        return cCount<=k;
+    }
+};
